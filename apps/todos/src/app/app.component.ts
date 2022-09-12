@@ -9,7 +9,7 @@ import { Todo } from '@nx-angular-tutorial/data';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'todos';
+  title = 'Welcome todos';
   todos: Todo[] = [];
 
   constructor(private http: HttpClient) {

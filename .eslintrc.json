@@ -1,6 +1,17 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "tsconfig.base.json"
+      }
+    }
+  },
   "plugins": ["@nrwl/nx"],
   "overrides": [
     {
@@ -23,8 +34,26 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "plugin:import/recommended",
+        "plugin:import/typescript"
+      ],
+      "rules": {
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index"
+            ]
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
